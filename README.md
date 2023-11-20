@@ -43,15 +43,15 @@ const withAllVariables = import(`${allRoute}`);
 
 ## 1번 (변수가 없을 때)
 
-![Alt text](image-4.png)
+![Alt text](image-7.png)
 
 ## 2번 (경로에 변수가 일부 포함되어있을 때)
 
-![Alt text](image-5.png)
+![Alt text](image-8.png)
 
 ## 3번 (경로 자체에 변수만 있을 때)
 
-![Alt text](image-6.png)
+![Alt text](image-9.png)
 
 # Getting Started with Create React App
 
