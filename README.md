@@ -1,3 +1,5 @@
+# 웹팩 번들링 과정에서 동적 import 가 여러 형태로 존재할 때 실제로 어떻게 번들링 되는지 확인
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
