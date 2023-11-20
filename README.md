@@ -1,5 +1,58 @@
 # 웹팩 번들링 과정에서 동적 import 가 여러 형태로 존재할 때 실제로 어떻게 번들링 되는지 확인
 
+# 1. 동적 import 경로가 명시적인 경우
+
+```js
+const named = import(`./utils/util1`);
+```
+
+utils 하위 util1 만 app.js 에서 분리된 새 청크로 빌드 된다.
+
+![Alt text](image-2.png)
+
+-   해당 경로의 모듈만 분리된 청크로 빌드된 모습
+
+# 2. 동적 import 경로에 변수가 일부 포함된 경우
+
+```js
+const routeValue = "util1";
+
+`./utils/${routeValue}`;
+```
+
+./utils 하위의 모든 모듈들이 app.js 와 분리된 청크들로 빌드된다.
+
+![Alt text](image-1.png)
+
+-   util1, util2, util3 이 모두 분리된 청크 파일로 빌드된 모습
+-   필요할때 가져오는 코드 스플리팅이 적용된것도 아니고 그냥 모든 파일이 따로 빌드 되어있음
+
+# 32. 동적 import 경로 자체가 변수가 되어버린 경우
+
+```js
+const allRoute = "./utils/util1";
+
+const withAllVariables = import(`${allRoute}`);
+```
+
+![Alt text](image-3.png)
+
+-   그냥 유효한 모든 파일을 대상으로 빌드해버림
+
+-   다른 빌드 결과물과 비교해봐도 뭔가 많고 전체 용량이 크다.
+
+## 1번 (변수가 없을 때)
+
+![Alt text](image-4.png)
+
+## 2번 (경로에 변수가 일부 포함되어있을 때)
+
+![Alt text](image-5.png)
+
+## 3번 (경로 자체에 변수만 있을 때)
+
+![Alt text](image-6.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
